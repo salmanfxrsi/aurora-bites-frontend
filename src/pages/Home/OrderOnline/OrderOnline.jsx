@@ -19,7 +19,7 @@ const OrderOnline = () => {
         subtitle="---From 11:00am to 10:00pm---"
         title="ORDER ONLINE"
       ></SectionTitle>
-      <section className="container mx-auto">
+      <section>
         <Swiper
           slidesPerView={4}
           spaceBetween={30}
