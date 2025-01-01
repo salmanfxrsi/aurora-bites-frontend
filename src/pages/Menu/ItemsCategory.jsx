@@ -16,7 +16,7 @@ const ItemsCategory = ({ image, items, category, description }) => {
         ))}
       </div>
       <Link
-        to="/order-food"
+        to={`/our-shop/${category}`}
         className="py-5 px-8 border-b-[3px] rounded-lg border-[#1F2937] font-medium text-xl mx-auto block text-center w-[400px] mt-8"
       >
         ORDER YOUR FAVORITE FOOD

@@ -12,6 +12,9 @@ const Navbar = () => {
       <NavLink to="/our-shop" className="text-white font-bold text-lg">
         Our Shop
       </NavLink>
+      <NavLink to="/login" className="text-white font-bold text-lg">
+        Login
+      </NavLink>
     </>
   );
 

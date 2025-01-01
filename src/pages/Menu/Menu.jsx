@@ -32,7 +32,7 @@ const Menu = () => {
           title="---Don't miss---"
           subtitle="TODAY'S OFFER"
         ></SectionTitle>
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 gap-6">
           {popularMenu.map((food) => (
             <FoodCard key={food._id} food={food}></FoodCard>
           ))}
@@ -49,7 +49,7 @@ const Menu = () => {
         <ItemsCategory
           image={desertImage}
           items={dessertsMenu}
-          category="Desserts"
+          category="desserts"
           description="Desserts are sweet treats enjoyed at the end of a meal or as a standalone indulgence."
         ></ItemsCategory>
       </section>
@@ -58,7 +58,7 @@ const Menu = () => {
         <ItemsCategory
           image={pizzaImage}
           items={pizzasMenu}
-          category="Pizzas"
+          category="pizzas"
           description="Pizza is a globally loved dish made with a flat, round dough base topped with a rich tomato sauce, gooey cheese, and a variety of toppings like vegetables, meats, and herbs."
         ></ItemsCategory>
       </section>
@@ -67,7 +67,7 @@ const Menu = () => {
         <ItemsCategory
           image={saladImage}
           items={saladsMenu}
-          category="Salads"
+          category="salads"
           description="Salad is a fresh and nutritious dish made from a mix of vegetables, fruits, proteins, or grains, often seasoned with dressings and herbs. "
         ></ItemsCategory>
       </section>
@@ -76,7 +76,7 @@ const Menu = () => {
         <ItemsCategory
           image={soupImage}
           items={soupsMenu}
-          category="Soups"
+          category="soups"
           description="Soup is a comforting and versatile dish made by simmering ingredients like vegetables, meats, beans, or grains in a flavorful broth. It can be served hot or cold, depending on the recipe, and ranges from light and clear broths to hearty, creamy varieties."
         ></ItemsCategory>
       </section>
