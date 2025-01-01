@@ -3,6 +3,9 @@
   font-family: "Cinzel", serif;
 }
 
+.active {
+  text-decoration: underline
+}
 
 @tailwind base;
 @tailwind components;
