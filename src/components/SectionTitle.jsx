@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const SectionTitle = ({ subtitle, title }) => {
   return (
     <div className="text-center w-[450px] mb-12 mx-auto">
