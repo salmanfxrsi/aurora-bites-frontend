@@ -3,7 +3,7 @@ import SectionTitle from "../../../components/SectionTitle";
 import useMenu from "../../../hooks/useMenu";
 import { Link } from "react-router";
 const WellRatedFood = () => {
-  const { menu } = useMenu(6);
+  const { menu } = useMenu("popular", null);
   return (
     <div>
       <SectionTitle

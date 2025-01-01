@@ -1,5 +1,6 @@
 import Banner from "./Banner/Banner";
 import CallUs from "./Call Us/CallUs";
+import ChefRecommends from "./Chef Recommends/ChefRecommends";
 import Information from "./Information/Information";
 import OrderOnline from "./OrderOnline/OrderOnline";
 import Testimonials from "./Testimonials/Testimonials";
@@ -24,6 +25,10 @@ const Home = () => {
       {/* Call Us */}
       <section className="container mx-auto pb-24">
         <CallUs></CallUs>
+      </section>
+      {/* Chef Recommends */}
+      <section className="container mx-auto pb-24">
+        <ChefRecommends></ChefRecommends>
       </section>
       {/* Testimonials */}
       <section className="container mx-auto pb-24">
