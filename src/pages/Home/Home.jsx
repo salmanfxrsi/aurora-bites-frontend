@@ -2,6 +2,7 @@ import Banner from "./Banner/Banner";
 import CallUs from "./Call Us/CallUs";
 import Information from "./Information/Information";
 import OrderOnline from "./OrderOnline/OrderOnline";
+import Testimonials from "./Testimonials/Testimonials";
 import WellRatedFood from "./Well Rated Food/WellRatedFood";
 
 const Home = () => {
@@ -23,6 +24,10 @@ const Home = () => {
       {/* Call Us */}
       <section className="container mx-auto pb-24">
         <CallUs></CallUs>
+      </section>
+      {/* Testimonials */}
+      <section className="container mx-auto pb-24">
+        <Testimonials></Testimonials>
       </section>
     </div>
   );
