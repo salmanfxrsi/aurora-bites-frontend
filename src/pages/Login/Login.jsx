@@ -1,6 +1,6 @@
 import "../Login/login.css";
 import loginImage from "../../assets/others/authentication2.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
@@ -8,6 +8,9 @@ import { FcGoogle } from "react-icons/fc";
 const Login = () => {
   const { signIn, setUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,7 +21,7 @@ const Login = () => {
       .then((result) => {
         setUser(result.user);
         toast.success("Sign In Successful");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
@@ -31,7 +34,7 @@ const Login = () => {
       .then((result) => {
         setUser(result.user);
         toast.success("Sign In Successful");
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);
