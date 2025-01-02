@@ -6,20 +6,26 @@ import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 const Registration = () => {
-  const { signUp, setUser, googleSignIn } = useContext(AuthContext);
+  const { signUp, setUser, googleSignIn, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    const name = form.name.value;
+    const image = form.image.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    // signUp with email and password
     signUp(email, password)
       .then((result) => {
         setUser(result.user);
-        toast.success("SignUp Successful");
+
+        // updating user profile
+        updateUserProfile(name, image);
+        setUser({ ...result.user, displayName: name, photoURL: image });
+        toast.success("Registration Successful");
         navigate("/");
       })
       .catch((error) => {
@@ -61,6 +67,21 @@ const Registration = () => {
                 type="text"
                 placeholder="Your Name"
                 name="name"
+                autoComplete="off"
+                className="input input-bordered bg-[#FFFFFF] rounded-lg border border-[#D0D0D0] font-serif"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="font-semibold text-xl text-#444444]">
+                  Photo URL
+                </span>
+              </label>
+              <input
+                type="url"
+                placeholder="Photo URL"
+                name="image"
                 autoComplete="off"
                 className="input input-bordered bg-[#FFFFFF] rounded-lg border border-[#D0D0D0] font-serif"
                 required

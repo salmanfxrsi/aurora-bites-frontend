@@ -23,6 +23,7 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     signOut()
+      // eslint-disable-next-line no-unused-vars
       .then((result) => {
         toast.success("Sign Out Successful");
         navigate("/");
@@ -62,13 +63,20 @@ const Navbar = () => {
           </div>
           <div>
             <p className="text-[2rem] font-black text-white">AURORA BITES</p>
-            <p className="font-bold text-2xl text-white">RESTAURANT</p>
+            {user ? (
+              <p className="text-white text-lg font-bold">
+                Welcome {user?.displayName}
+              </p>
+            ) : (
+              <p className="font-bold text-2xl text-white">RESTAURANT</p>
+            )}
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <div className="menu menu-horizontal flex gap-4">{links}</div>
         </div>
         <div className="navbar-end">
+          {/* SignOut Button */}
           {user && (
             <button onClick={handleSignOut} className="btn btn-warning">
               Sign Out
