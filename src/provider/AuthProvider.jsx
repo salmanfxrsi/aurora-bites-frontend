@@ -9,11 +9,13 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
+
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const googleAuthProvider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
+  console.log(user)
   const [loading, setLoading] = useState(true);
   //   signUp using email and password
   const signUp = (email, password) => {

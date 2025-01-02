@@ -1,12 +1,12 @@
-import "../Login/login.css";
-import loginImage from "../../assets/others/authentication2.png";
 import { Link, useNavigate } from "react-router-dom";
+import registrationImage from "../../assets/others/authentication2.png";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
-const Login = () => {
-  const { signIn, setUser, googleSignIn } = useContext(AuthContext);
+
+const Registration = () => {
+  const { signUp, setUser, googleSignIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -14,10 +14,12 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    signIn(email, password)
+
+    // signUp with email and password
+    signUp(email, password)
       .then((result) => {
         setUser(result.user);
-        toast.success("Sign In Successful");
+        toast.success("SignUp Successful");
         navigate("/");
       })
       .catch((error) => {
@@ -30,24 +32,40 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         setUser(result.user);
-        toast.success("Sign In Successful");
+        toast.success("SignUp Successful");
         navigate("/");
       })
       .catch((error) => {
         toast.error(error.message);
       });
   };
+
   return (
     <div className="hero bg-base-200 min-h-screen bg-login">
-      <div className="hero-content flex-col lg:flex-row bg-login p-24 shadow-2xl">
+      <div className="hero-content flex-col lg:flex-row-reverse bg-login p-24 shadow-2xl">
         <div>
-          <img src={loginImage} alt="" />
+          <img src={registrationImage} alt="" />
         </div>
         <div className="card w-full max-w-sm shrink-0 ">
           <form onSubmit={handleSubmit} className="card-body">
             <h1 className="font-bold text-[2.5rem] text-[#151515] text-center">
-              Login
+              Registration
             </h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="font-semibold text-xl text-#444444]">
+                  Name
+                </span>
+              </label>
+              <input
+                type="text"
+                placeholder="Your Name"
+                name="name"
+                autoComplete="off"
+                className="input input-bordered bg-[#FFFFFF] rounded-lg border border-[#D0D0D0] font-serif"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="font-semibold text-xl text-#444444]">
@@ -56,7 +74,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                placeholder="email"
+                placeholder="Email"
                 name="email"
                 autoComplete="off"
                 className="input input-bordered bg-[#FFFFFF] rounded-lg border border-[#D0D0D0] font-serif"
@@ -76,22 +94,22 @@ const Login = () => {
                 className="input input-bordered"
                 required
               />
-              <label className="label">
+              {/* <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a>
-              </label>
+              </label> */}
             </div>
             <div className="form-control mt-6">
               <button className="w-full py-3 text-white text-xl font-bold bg-[#D1A054B3] rounded-lg">
-                Sign In
+                Sign Up
               </button>
             </div>
           </form>
           <h1 className="text-center font-serif text-xl font-medium text-[#D1A054]">
-            New here?{" "}
-            <Link to="/register" className="font-bold">
-              Create a New Account
+            Old here?{" "}
+            <Link to="/login" className="font-bold">
+              Login Now
             </Link>
           </h1>
           <h2 className="font-serif text-center mt-3 text-xl font-medium text-[#444444]">
@@ -110,4 +128,5 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+
+export default Registration;
