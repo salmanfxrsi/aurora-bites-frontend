@@ -75,7 +75,14 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <div className="menu menu-horizontal flex gap-4">{links}</div>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end flex gap-4">
+          {user && (
+            <Link to='/dashboard' className="avatar online">
+              <div className="w-14 rounded-full">
+                <img src={user?.photoURL} />
+              </div>
+            </Link>
+          )}
           {/* SignOut Button */}
           {user && (
             <button onClick={handleSignOut} className="btn btn-warning">

@@ -5,6 +5,7 @@ import Menu from "../pages/Menu/Menu";
 import OurShop from "../pages/OurShop/OurShop";
 import Login from "../pages/Login/Login";
 import Registration from "../pages/Registration/registration";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -16,23 +17,27 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/menu",
+        path: "menu",
         element: <Menu />,
       },
       {
-        path: "/our-shop",
+        path: "our-shop",
         element: <OurShop />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Registration />,
       },
     ],
   },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />
+  }
 ]);
 
 export default router;
