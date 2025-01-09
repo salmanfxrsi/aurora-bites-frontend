@@ -5,7 +5,7 @@ const DashboardLayout = () => {
   return (
     <div className="flex">
       {/* Dashboard */}
-      <div className="bg-[#D1A054] w-[280px] h-svh">
+      <div className="bg-[#D1A054] w-[280px] min-h-screen">
         <Dashboard></Dashboard>
       </div>
       {/* Dashboard Outlet */}

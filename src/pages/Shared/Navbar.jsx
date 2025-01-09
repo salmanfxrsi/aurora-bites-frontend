@@ -2,22 +2,31 @@ import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
+import useCart from "../../hooks/useCart";
 
 const Navbar = () => {
   const { user, signOut } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [cart] = useCart();
 
   const links = (
     <>
-      <NavLink to="/" className="text-white font-bold text-lg">
+      <NavLink to="/" className="font-bold text-lg">
         Home
       </NavLink>
-      <NavLink to="/menu" className="text-white font-bold text-lg">
+      <NavLink to="/menu" className="font-bold text-lg">
         Menu
       </NavLink>
-      <NavLink to="/our-shop" className="text-white font-bold text-lg">
+      <NavLink to="/our-shop" className="font-bold text-lg">
         Our Shop
       </NavLink>
+      {user && (
+        <>
+          <NavLink to="/dashboard/my-cart" className="font-bold text-lg">
+            Cart ({cart.length})
+          </NavLink>
+        </>
+      )}
     </>
   );
 
@@ -34,7 +43,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-black fixed z-10 w-full">
+    <div className="bg-[#D1A054] fixed z-10 w-full">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -62,13 +71,13 @@ const Navbar = () => {
             </div>
           </div>
           <div>
-            <p className="text-[2rem] font-black text-white">AURORA BITES</p>
+            <p className="text-[2rem] font-black text-black">AURORA BITES</p>
             {user ? (
-              <p className="text-white text-lg font-bold">
+              <p className="text-black text-lg font-bold">
                 Welcome {user?.displayName}
               </p>
             ) : (
-              <p className="font-bold text-2xl text-white">RESTAURANT</p>
+              <p className="font-bold text-2xl text-black">RESTAURANT</p>
             )}
           </div>
         </div>
@@ -77,7 +86,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex gap-4">
           {user && (
-            <Link to='/dashboard' className="avatar online">
+            <Link to="/dashboard" className="avatar online">
               <div className="w-14 rounded-full">
                 <img src={user?.photoURL} />
               </div>
@@ -85,12 +94,12 @@ const Navbar = () => {
           )}
           {/* SignOut Button */}
           {user && (
-            <button onClick={handleSignOut} className="btn btn-warning">
+            <button onClick={handleSignOut} className="btn bg-black text-white">
               Sign Out
             </button>
           )}
           {!user && (
-            <Link to="/login" className="btn btn-warning">
+            <Link to="/login" className="btn bg-black text-white">
               Sign In
             </Link>
           )}

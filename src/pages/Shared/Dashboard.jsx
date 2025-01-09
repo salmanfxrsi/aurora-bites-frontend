@@ -8,8 +8,11 @@ import { RiReservedFill } from "react-icons/ri";
 import { TbBrandBooking } from "react-icons/tb";
 import { TiShoppingCart } from "react-icons/ti";
 import { NavLink } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 const Dashboard = () => {
+  const [cart] = useCart();
+
   return (
     <div className="mt-[50px] ml-[35px]">
       {/* Dashboard Heading */}
@@ -47,7 +50,7 @@ const Dashboard = () => {
           className="flex items-center text-base font-bold gap-1"
         >
           <TiShoppingCart className="text-xl" />
-          <p className="mt-1">My Cart</p>
+          <p className="mt-1">My Cart ({cart.length})</p>
         </NavLink>
         <NavLink
           to="add-review"

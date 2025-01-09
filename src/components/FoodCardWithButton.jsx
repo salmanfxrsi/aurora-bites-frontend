@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import useCart from "../hooks/useCart";
 
 /* eslint-disable react/prop-types */
 const FoodCardWithButton = ({ food }) => {
@@ -10,8 +11,9 @@ const FoodCardWithButton = ({ food }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const axiosSecure = useAxiosSecure();
+  const [, refetch] = useCart();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     if (user && user.email) {
       const cartItem = {
         menuId: _id,
@@ -21,15 +23,16 @@ const FoodCardWithButton = ({ food }) => {
         image,
         price,
       };
-      try{
-        axiosSecure.post('/carts', cartItem)
-        toast.success(`${name} Added To Cart`)
-      }catch(error){
-        toast.error(error.message)
+      try {
+        await axiosSecure.post("/cart", cartItem);
+        toast.success(`${name} Added To Cart`);
+        refetch();
+      } catch (error) {
+        toast.error(error.message);
       }
     } else {
       toast.error("SignIn To Add To Cart");
-      navigate('/login', { state: { from: location } })
+      navigate("/login", { state: { from: location } });
       return;
     }
   };
