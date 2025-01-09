@@ -18,7 +18,7 @@ const Dashboard = () => {
       {/* Dashboard Heading */}
       <div>
         <h1 className="uppercase font-black text-[#151515] text-2xl">
-          Bistro Boss
+          Aurora Bites
         </h1>
         <p className="text-[#151515] uppercase font-bold text-lg">Restaurant</p>
       </div>

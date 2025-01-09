@@ -4,9 +4,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
-import { FcGoogle } from "react-icons/fc";
+import GoogleLoginButton from "../../components/GoogleLoginButton";
 const Login = () => {
-  const { signIn, setUser, googleSignIn } = useContext(AuthContext);
+  const { signIn, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -28,18 +28,6 @@ const Login = () => {
       });
   };
 
-  // signIn with google
-  const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then((result) => {
-        setUser(result.user);
-        toast.success("Sign In Successful");
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
   return (
     <div className="hero bg-base-200 min-h-screen bg-login">
       <div className="hero-content flex-col lg:flex-row bg-login p-24 shadow-2xl">
@@ -101,13 +89,7 @@ const Login = () => {
             Or sign in with
           </h2>
           {/* Google Login Button */}
-          <button
-            onClick={handleGoogleSignIn}
-            className="w-[320px] mt-4 mx-auto flex items-center justify-center gap-2 p-3 border border-gray-300 rounded-md shadow-md hover:shadow-lg transition-shadow duration-200 hover:bg-gray-100"
-          >
-            <FcGoogle size={24} />
-            <span className="text-gray-700 font-medium">Login with Google</span>
-          </button>
+          <GoogleLoginButton />
         </div>
       </div>
     </div>

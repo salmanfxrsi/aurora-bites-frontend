@@ -3,14 +3,14 @@ import registrationImage from "../../assets/others/authentication2.png";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
-import { FcGoogle } from "react-icons/fc";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import GoogleLoginButton from "../../components/GoogleLoginButton";
 
 const Registration = () => {
-  const { signUp, setUser, googleSignIn, updateUserProfile } =
+  const { signUp, setUser, updateUserProfile } =
     useContext(AuthContext);
   const navigate = useNavigate();
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,7 +30,7 @@ const Registration = () => {
             image,
             email,
           };
-          await axiosSecure.post("/users", userInfo).then((res) => {
+          await axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
               setUser({ ...result.user, displayName: name, photoURL: image });
               toast.success("Registration Successful");
@@ -38,19 +38,6 @@ const Registration = () => {
             }
           });
         });
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
-
-  // signIn with google
-  const handleGoogleSignIn = () => {
-    googleSignIn()
-      .then((result) => {
-        setUser(result.user);
-        toast.success("SignUp Successful");
-        navigate("/");
       })
       .catch((error) => {
         toast.error(error.message);
@@ -148,13 +135,7 @@ const Registration = () => {
             Or sign in with
           </h2>
           {/* Google Login Button */}
-          <button
-            onClick={handleGoogleSignIn}
-            className="w-[320px] mt-4 mx-auto flex items-center justify-center gap-2 p-3 border border-gray-300 rounded-md shadow-md hover:shadow-lg transition-shadow duration-200 hover:bg-gray-100"
-          >
-            <FcGoogle size={24} />
-            <span className="text-gray-700 font-medium">Login with Google</span>
-          </button>
+          <GoogleLoginButton />
         </div>
       </div>
     </div>
