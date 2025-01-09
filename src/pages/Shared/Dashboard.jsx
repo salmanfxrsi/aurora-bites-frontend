@@ -22,43 +22,43 @@ const Dashboard = () => {
       {/* Dashboard NavLink */}
       <div className="my-[60px] flex flex-col gap-1">
         <NavLink
-          to="user-home"
-          className="flex items-center text-base font-bold text-white gap-1"
+          to="dashboard"
+          className="flex items-center text-base font-bold gap-1"
         >
           <IoIosHome className="text-xl" />
           <p className="mt-1">User Home</p>
         </NavLink>
         <NavLink
           to="reservation"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <RiReservedFill className="text-xl" />
           <p className="mt-1">Reservation</p>
         </NavLink>
         <NavLink
           to="payment-history"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <MdOutlinePayment className="text-xl" />
           <p className="mt-1">Payment History</p>
         </NavLink>
         <NavLink
           to="my-cart"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <TiShoppingCart className="text-xl" />
           <p className="mt-1">My Cart</p>
         </NavLink>
         <NavLink
           to="add-review"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <GoCodeReview className="text-xl" />
           <p className="mt-1">Add Review</p>
         </NavLink>
         <NavLink
           to="my-booking"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <TbBrandBooking className="text-xl" />
           <p className="mt-1">My Booking</p>
@@ -69,28 +69,28 @@ const Dashboard = () => {
       <div className="my-[60px] flex flex-col gap-2">
         <NavLink
           to="/"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <IoIosHome className="text-xl" />
           <p className="mt-1">Home</p>
         </NavLink>
         <NavLink
           to="/menu"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <LuMenu className="text-xl" />
           <p className="mt-1">Menu</p>
         </NavLink>
         <NavLink
           to="/our-shop"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <BsShop className="text-xl" />
           <p className="mt-1">Shop</p>
         </NavLink>
         <NavLink
           to="contact"
-          className="flex items-center text-base font-bold text-white gap-1"
+          className="flex items-center text-base font-bold gap-1"
         >
           <PiPhoneCallFill className="text-xl" />
           <p className="">Contact</p>

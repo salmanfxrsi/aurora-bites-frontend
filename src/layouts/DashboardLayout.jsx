@@ -9,7 +9,7 @@ const DashboardLayout = () => {
         <Dashboard></Dashboard>
       </div>
       {/* Dashboard Outlet */}
-      <div className="">
+      <div className="w-full mt-[50px]">
         <Outlet></Outlet>
       </div>
     </div>
