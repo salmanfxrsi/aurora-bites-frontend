@@ -4,11 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Registration = () => {
   const { signUp, setUser, googleSignIn, updateUserProfile } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,14 +21,23 @@ const Registration = () => {
     const password = form.password.value;
 
     signUp(email, password)
-      .then((result) => {
+      .then(async (result) => {
         setUser(result.user);
-
         // updating user profile
-        updateUserProfile(name, image);
-        setUser({ ...result.user, displayName: name, photoURL: image });
-        toast.success("Registration Successful");
-        navigate("/");
+        updateUserProfile(name, image).then(async () => {
+          const userInfo = {
+            name,
+            image,
+            email,
+          };
+          await axiosSecure.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              setUser({ ...result.user, displayName: name, photoURL: image });
+              toast.success("Registration Successful");
+              navigate("/");
+            }
+          });
+        });
       })
       .catch((error) => {
         toast.error(error.message);
